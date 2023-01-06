@@ -1,0 +1,8 @@
+.button {
+    position: sticky;
+    background-color: #FFF;
+    margin-top: 95px;
+   font-size: 1.3em;
+   font-weight: 600;
+    padding: 1em;
+}
