@@ -33,7 +33,7 @@ const options = {
 const Garages = () => {
   const [garages, setGarages] = useState<IGarage[]>([]);
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: """",
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY!,
   });
   const [pos, setPos] = useState<IPosition>({
     lat: 0,
