@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import IGarage from "../interfaces/IGarage";
 import styles from "../styles/garage.module.css"
@@ -6,8 +7,8 @@ const GarageCard = (garage: IGarage) => {
   return (
     <>
       <li className={styles.card} id={`garage${garage.id}`}>
-        <a className={styles.card__link} target="_blank" href={garage.link}>
-          <img
+        <a className={styles.card__link} target="_blank" href={garage.link}  rel="noreferrer">
+          <Image
             className={styles.card__img}
             alt="Logo garage"
             src={garage.image}

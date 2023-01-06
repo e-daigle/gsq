@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../styles/header.module.css";
+import Image from "next/image";
 
 const Header = () => {
   const [click, setClick] = useState(false);
@@ -13,7 +14,7 @@ const Header = () => {
       <nav className={styles.header}>
         <div className={styles.container}>
           <Link href="/" className={styles.logo}>
-            <img src="GSQ.png" alt="Logo" width={75} />
+            <Image src="GSQ.png" alt="Logo" width={75} />
           </Link>
           <div className={styles.navMenu__icon} onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
