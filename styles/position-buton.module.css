@@ -1,8 +1,21 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .button {
-    position: sticky;
-    background-color: #FFF;
-    margin-top: 95px;
-   font-size: 1.3em;
-   font-weight: 600;
-    padding: 1em;
+    pointer-events: all;
+  cursor: pointer;
+  margin-top: 95px;
+  background-color: #fff;
+  font-size: 1.3em;
+  font-weight: 500;
+  padding: 0.9em;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+.button:hover{
+    background-color: whitesmoke;
 }

@@ -13,6 +13,7 @@ const HomeCard = ({path, label, src, text}: { path: string, label: string, src: 
               className={styles.card__img}
               alt='Travel Image'
               src={src}
+              fill
             />
           </figure>
           <div className={styles.card__info}>

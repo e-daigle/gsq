@@ -14,7 +14,7 @@ const Header = () => {
       <nav className={styles.header}>
         <div className={styles.container}>
           <Link href="/" className={styles.logo}>
-            <Image src="GSQ.png" alt="Logo" width={75} />
+            <img src="/GSQ.png" alt="Logo" width={75} />
           </Link>
           <div className={styles.navMenu__icon} onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />

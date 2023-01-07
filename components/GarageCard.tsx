@@ -8,7 +8,7 @@ const GarageCard = (garage: IGarage) => {
     <>
       <li className={styles.card} id={`garage${garage.id}`}>
         <a className={styles.card__link} target="_blank" href={garage.link}  rel="noreferrer">
-          <Image
+          <img
             className={styles.card__img}
             alt="Logo garage"
             src={garage.image}

@@ -128,7 +128,7 @@ const Garages = () => {
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
-          <div ref={buttonRef}><CurrentLocation setPos={setPos} /></div>
+          <div ref={buttonRef}><CurrentLocation setPos={setPos}/></div>
           {pos.lat != 0 && pos.lng != 0 && <MarkerF position={pos} />}
           {garages.map((garage) => {
             return (
