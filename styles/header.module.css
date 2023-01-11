@@ -8,7 +8,7 @@
   font-size: 1.2rem;
   top: 0;
   position: fixed;
-  z-index: 999;
+  z-index: 1001;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-bottom: #5d5c61CC solid 2px;
 }

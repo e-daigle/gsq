@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import IGarage from "../interfaces/IGarage";
 import styles from "../styles/garage.module.css"

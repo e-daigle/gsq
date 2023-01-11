@@ -35,7 +35,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="garages"
+                href="/garages"
                 className={styles.navMenu__link}
                 onClick={closeMobileMenu}
               >
@@ -44,7 +44,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="guides"
+                href="/guides"
                 className={styles.navMenu__link}
                 onClick={closeMobileMenu}
               >
@@ -53,7 +53,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="products"
+                href="/products"
                 className={styles.navMenu__link}
                 onClick={closeMobileMenu}
               >

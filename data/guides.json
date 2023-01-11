@@ -1,23 +1,23 @@
 [
   {
     "id": 1,
-    "titre": "Blowoff Valves et Bypass Valves",
-    "desc": "allo123",
+    "titre": "Blowoff Valves (BOV)",
+    "desc": "La bypass valve joue un rôle crucial dans le fonctionnement de votre Subaru turbo. \nPeut-on la remplacer par une blowoff valve? \nQuelle est la meilleure option pour votre Subaru?",
     "link": "bov",
-    "image": "/Images/Liste/"
+    "image": "/Guides/bov.png"
   },
   {
     "id": 2,
     "titre": "COBB Accessport",
     "desc": "aalalla",
     "link": "cobbstages",
-    "image": "/Images/Liste/"
+    "image": "/Guides/accessport.png"
   },
   {
     "id": 3,
     "titre": "Bases modifications",
     "desc": "aalalla",
     "link": "bov",
-    "image": "/Images/Liste/"
+    "image": "/Guides/bases.png"
   }
 ]

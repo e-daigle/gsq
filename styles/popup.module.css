@@ -1,0 +1,40 @@
+.container {
+  display: inline-block;
+  width: 250px;
+}
+
+.img {
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: all 0.2s linear;
+}
+
+.img:hover {
+  transform: scale(1.1);
+}
+
+.info h5 {
+  margin-top: 0.2em;
+  text-align: wrap;
+  color: #252e48;
+  font-size: 0.9em;
+  line-height: 18px;
+}
+
+.info h2 {
+  color: #252e48;
+  font-size: 1.2em;
+  line-height: 35px;
+  text-align: wrap;
+}
+
+.info h6 {
+  color: #252e48;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  line-height: 18px;
+  word-wrap: break-word;
+  cursor: pointer;
+  text-decoration: underline;
+}
