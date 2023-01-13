@@ -10,7 +10,7 @@ const GuideCard = ({ guide }: { guide: IGuide }) => {
         <img className={styles.card__img} src={guide.image} alt="image guide" />
         <div className={styles.card__info}>
           <h1>{guide.titre}</h1>
-          <h2>{guide.desc}</h2>
+          <h2>{guide.desc.replaceAll("\\n", '\n')}</h2>
           <div>
             <Link href={`/guides/${guide.link}`}>En apprendre plus</Link>
           </div>

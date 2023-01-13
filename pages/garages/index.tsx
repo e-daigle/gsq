@@ -5,6 +5,7 @@ import { supabase } from "../../utils/supabase";
 import { getGarages } from "../../lib/garages";
 import { redirect } from "next/dist/server/api-utils";
 import MapPlaceHolder from "../../components/MapPlaceHolder"
+import { GetStaticProps } from "next";
 
 const MapL = dynamic(import("../../components/MapL"), {
   ssr: false,
@@ -14,12 +15,12 @@ const MapL = dynamic(import("../../components/MapL"), {
 });
 
 const Garages = ({ garages }: { garages: IGarage[]}) => {
-  return <>{garages.length > 0 ? <MapL garages={garages} /> : <MapPlaceHolder />}</>;
+  return <>{garages.length ? <MapL garages={garages} /> : <MapPlaceHolder />}</>;
 };
 
 export default Garages;
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const garages = await getGarages();
   return {
     props: {
@@ -27,4 +28,4 @@ export async function getStaticProps() {
     },
     revalidate: 300,
   };
-}
+};

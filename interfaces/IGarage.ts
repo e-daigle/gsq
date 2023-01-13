@@ -6,7 +6,5 @@ export default interface IGarage {
   phone: string;
   address: string;
   marker: string;
-  lat: number;
-  lng: number;
   pos: {lat: number, lng: number};
 }

@@ -1,4 +1,4 @@
-export default interface IGuideSection {
+export default interface IGuideContent {
     title: string;
     paragraphs: [
       {
