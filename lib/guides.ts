@@ -39,7 +39,6 @@ export const getGuidesPaths = async () => {
 };
 
 export const getGuide = async (name: string) => {
-  console.log(name);
   try {
     const { data, error, status } = await supabase
       .from("guides")
@@ -54,8 +53,6 @@ export const getGuide = async (name: string) => {
         title: data.longTitle,
         paragraphs: data.content,
       }
-
-      console.log(guide);
       return guide;
     }
   } catch (error) {

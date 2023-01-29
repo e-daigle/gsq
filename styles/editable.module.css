@@ -1,0 +1,62 @@
+.container {
+  position: relative;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 40px;
+  position: absolute;
+  top: 0px;
+  left: -38px;
+}
+.controls div {
+  cursor: pointer;
+}
+.container:first-of-type .up {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.1;
+}
+.container:last-of-type .down {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.1;
+}
+
+.buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  top: -2px;
+  right: 0;
+}
+
+.buttons div {
+  display: grid;
+  place-items: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 4px;
+  border: 2px solid black ;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.buttons div:hover svg {
+  fill: red;
+}
+
+.buttons svg {
+  fill: black
+}
+.container .buttons {
+  visibility: hidden;
+}
+
+.container:hover .buttons {
+  visibility: visible;
+}
+

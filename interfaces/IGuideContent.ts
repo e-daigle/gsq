@@ -2,9 +2,7 @@ export default interface IGuideContent {
     title: string;
     paragraphs: [
       {
-        id?: number;
         title?: string;
-        block?: string;
         inline?: [
           {
             text?: string;

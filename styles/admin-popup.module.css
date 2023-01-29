@@ -1,0 +1,71 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+}
+
+.container {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 60%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 2rem;
+}
+
+.buttons button {
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+
+.buttons button:active {
+  color: lightgray;
+  border-color: lightgray;
+}
+
+.save {
+  background-color: limegreen;
+  border: 2px solid limegreen;
+}
+
+.save:hover {
+  color: limegreen;
+  background-color: white;
+}
+
+.cancel {
+  background-color: red;
+  border: 2px solid red;
+}
+
+.cancel:hover {
+  color: red;
+  background-color: white;
+}
+
+.inline * {
+  display: inline-block;
+  width: 100%;
+  word-wrap: break-word;
+  border: 1px solid gray;
+}
+
+.spanInput {
+  height: auto;
+  resize: none;
+  width: 100%;
+}

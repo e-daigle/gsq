@@ -5,7 +5,7 @@ import Header from '../components/Header';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const showHeader = router.pathname === '/login' || router.pathname === '/_error' ? false : true;
+  const showHeader = !(router.pathname === '/login' || router.pathname === '/_error' || router.pathname.startsWith("/admin")) 
   return (
   <>
   {showHeader && <Header />}

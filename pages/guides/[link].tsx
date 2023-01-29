@@ -24,7 +24,6 @@ const Guide = ({ guide, errors }: Props) => {
           {guide.paragraphs.map((guide, idx) => (
             <React.Fragment key={idx}>
               {guide.title && <h3 key={idx}>{guide.title}</h3>}
-              {guide.block && <p key={idx}>{guide.block}</p>}
               {guide.inline && (
                 <p key={idx}>
                   {guide.inline.map((inline, idx) => (
