@@ -1,37 +1,53 @@
 import Link from "next/link";
-import React from "react";
-import { IInline } from "../../../interfaces/IEditable";
+import React, { Dispatch, useState } from "react";
+import { IInline, IParagraph } from "../../../interfaces/IEditable";
 import styles from "../../../styles/admin-popup.module.css";
+import PopUpLink from "./PopUpLink";
 import PopUpSpan from "./PopUpSpan";
+import PopUpStrong from "./PopUpStrong";
 
 interface Props {
   inline: IInline[];
 }
 
 const PopUpInline = ({ inline }: Props) => {
+  const [inlineState, setInlineState] = useState(inline);
   function renderSwitch(inline: IInline, id: number) {
     if (inline.text)
       return (
         <PopUpSpan
           key={id}
           content={inline.text}
-          handleEdited={(text: string) => changeInline(text, id)}
+          handleEdited={(inline: IInline) => changeInline(inline, id)}
         />
       );
-    if (inline.strong) return <strong key={id}>{inline.strong} </strong>;
+    if (inline.strong)
+      return (
+        <PopUpStrong
+          key={id}
+          content={inline.strong}
+          handleEdited={(inline: IInline) => changeInline(inline, id)}
+        />
+      );
     if (inline.link)
       return (
-        <Link key={id} href={inline.link.to}>
-          {inline.link.text}{" "}
-        </Link>
+        <PopUpLink
+          key={id}
+          content={inline.link}
+          handleEdited={(inline: IInline) => changeInline(inline, id)}
+        />
       );
   }
-  const changeInline = (text: string, id: number) => {
-    
+
+  const changeInline = (inlineParam: IInline, id: number) => {
+    inline[id] = inlineParam;
+    setInlineState(old => [...old, { text: "allo" }]);
+    console.log(inline)
   };
+
   return (
     <div className={styles.inline}>
-      {inline.map((section, id) => renderSwitch(section, id))}
+      {inlineState.map((section, id) => renderSwitch(section, id))}
     </div>
   );
 };

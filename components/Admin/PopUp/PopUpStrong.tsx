@@ -12,7 +12,7 @@ interface Props {
   handleEdited: (inline: IInline) => void;
 }
 
-const PopUpSpan = ({ content, handleEdited }: Props) => {
+const PopUpStrong = ({ content, handleEdited }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleKeyboardEvent = (e: KeyboardEvent<HTMLSpanElement>) => {
@@ -24,7 +24,7 @@ const PopUpSpan = ({ content, handleEdited }: Props) => {
 
   const handleBlur = (e: FocusEvent<HTMLSpanElement>) => {
     setIsEditing(false);
-    handleEdited({ text: e.currentTarget.innerHTML });
+    handleEdited({ strong: e.currentTarget.innerHTML });
   };
 
   const handleClick = () => {
@@ -32,7 +32,7 @@ const PopUpSpan = ({ content, handleEdited }: Props) => {
   };
 
   return (
-    <span
+    <strong
       suppressContentEditableWarning={true}
       contentEditable={isEditing}
       onDoubleClick={handleClick}
@@ -40,8 +40,8 @@ const PopUpSpan = ({ content, handleEdited }: Props) => {
       onKeyDown={handleKeyboardEvent}
     >
       {content}
-    </span>
+    </strong>
   );
 };
 
-export default PopUpSpan;
+export default PopUpStrong;

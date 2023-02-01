@@ -4,9 +4,10 @@ import EditableParagraph from "../../components/Admin/EditableParagraph";
 import EditableTitle from "../../components/Admin/EditableTitle";
 import EditPopUp from "../../components/Admin/PopUp/EditPopUp";
 import Editable from "../../components/Editable";
-import IGuideContent from "../../interfaces/IEditable";
+import IGuideContent, { IInline } from "../../interfaces/IEditable";
 import IContent, { IParagraph } from "../../interfaces/IEditable";
 import { getGuide } from "../../lib/guides";
+import styles from "../../styles/admin-guide.module.css";
 
 const test = () => {
   const [guide, setGuide] = useState<IGuideContent>();
@@ -28,47 +29,22 @@ const test = () => {
     };
     fetchGuide();
   }, []);
-  const handleTextChange = (paragraphID: number, id: number, text: string) => {
-    /*try {
-      if (!guide) return;
-      if (!guide.paragraphs[paragraphID].inline?.[id].text) return;
-      setGuide((guide) => {
-        if (!guide) return guide;
-        let g = { ...guide };
-        g.paragraphs[paragraphID].inline![id].text = text;
-        return g;
-      });
-      console.log(guide)
-    } catch (error) {}*/
-  };
+
   const handleOpenPopUp = (pid: number) => {
     if (!pid && pid != 0) return;
     if (!guide) return;
     setEditingID(pid);
   };
 
-  const handleSave = (paragraph: IParagraph) => {
-    console.log(paragraph)
-    if (!guide) return;
-    if (!paragraph) return;
-    if (!editingID) return;
-    setGuide((guide) => {
-      if (!guide) return;
-      guide.paragraphs[editingID] = paragraph;
-      return guide;
-    });
+  const handleSave = () => {
     setEditingID(null);
-  };
-
-  const handleCancel = () => {
-    setEditingID(null);
+    console.log(guide?.paragraphs)
   };
 
   const handleArrow = (up: boolean, pid: number) => {
     if (!guide) return;
     if (pid <= 0 && up) return;
     if (pid >= guide.paragraphs.length - 1 && !up) return;
-    console.log("ok");
     let paragraphs = guide.paragraphs;
     let element = paragraphs[pid];
     paragraphs.splice(pid, 1);
@@ -82,27 +58,67 @@ const test = () => {
     });
   };
 
+  const handleDelete = (pid: number) => {
+    if (!guide) return;
+    let paragraphs = guide.paragraphs;
+    setGuide((guide) => {
+      if (!guide) return;
+      return {
+        title: guide.title,
+        paragraphs: guide.paragraphs.filter((s, i) => i != pid),
+      };
+    });
+  };
+
+  const handleAdd = (id: number, type: string) => {
+    const addId = id + 1;
+    if (!guide) return;
+    let newParahraph: IParagraph = {};
+    if (type === "paragraph") {
+      newParahraph = { inline: [{ text: "Nouveau Paragraphe" }] };
+    }
+    if (type === "title") {
+      newParahraph = { title: "Nouveau titre" };
+    }
+    setGuide((guide) => {
+      if (!guide) return;
+      return {
+        title: guide.title,
+        paragraphs: [
+          ...guide.paragraphs.slice(0, addId),
+          newParahraph,
+          ...guide.paragraphs.slice(addId),
+        ],
+      };
+    });
+  };
+
   return (
     <>
       {guide ? (
         <>
-          <div className="mainText">
-            <h2>{guide.title}</h2>
-            {guide.paragraphs.map((paragraph, pid) => (
-              <EditableContainer
-                key={pid}
-                handleArrow={(up: boolean) => handleArrow(up, pid)}
-                handleOpenPopUp={() => handleOpenPopUp(pid)}
-              >
-                {renderSwitch(paragraph)}
-              </EditableContainer>
-            ))}
+          <div className={styles.container}>
+            <div className={styles.controls}>ALLO</div>
+            <div className={styles.mainText}>
+              <h2>{guide.title}</h2>
+              {guide.paragraphs.map((paragraph, pid) => (
+                <EditableContainer
+                  key={pid}
+                  handleArrow={(up: boolean) => handleArrow(up, pid)}
+                  handleOpenPopUp={() => handleOpenPopUp(pid)}
+                  handleDelete={() => handleDelete(pid)}
+                  handleAdd={(type: string) => handleAdd(pid, type)}
+                >
+                  {renderSwitch(paragraph)}
+                </EditableContainer>
+              ))}
+            </div>
           </div>
-          {editingID !=null ? (
+
+          {editingID != null ? (
             <EditPopUp
               paragraph={guide.paragraphs[editingID]}
               handleSave={handleSave}
-              handleCancel={handleCancel}
             />
           ) : null}
         </>

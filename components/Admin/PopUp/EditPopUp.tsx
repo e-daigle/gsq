@@ -1,35 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IParagraph } from "../../../interfaces/IEditable";
 import styles from "../../../styles/admin-popup.module.css";
 import PopUpInline from "./PopUpInline";
+import PopUpTitle from "./PopUpTitle";
 
 interface Props {
   paragraph: IParagraph;
-  handleCancel: () => void;
-  handleSave: (paragraph: IParagraph) => void;
+  handleSave: () => void;
 }
 
-const EditPopUp = ({ paragraph, handleSave, handleCancel }: Props) => {
-  const [p, setP] = useState({ ...paragraph });
-
+const EditPopUp = ({ paragraph, handleSave }: Props) => {
   
-
   function renderSwitch(p: IParagraph) {
-    if (p.title) return <p>allo</p>;
-    if (p.inline) return <PopUpInline inline={p.inline} />;
-    return <></>;
+    if (p.title) return <PopUpTitle title={p.title}/>
+    if (p.inline) return <PopUpInline inline={p.inline}/>;
+    return null;
     //if(paragraph.text) return <Paragraph/>
   }
 
   return (
     <div className={styles.overlay}>
       <div className={styles.container}>
-        {renderSwitch(p)}
+        {renderSwitch(paragraph)}
         <div className={styles.buttons}>
-          <button className={styles.cancel} onClick={handleCancel}>
-            Annuler
-          </button>
-          <button className={styles.save} onClick={() => handleSave(p)}>
+          <button className={styles.save} onClick={() => handleSave()}>
             Enregistrer
           </button>
         </div>

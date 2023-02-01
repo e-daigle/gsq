@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  gap: 10px
+}
+
+.controls {
+  width: 20%;
+}
+
+.mainText {
+  padding: 0.6em;
+  text-align: justify;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.mainText h2 {
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #5d5c61;
+  font-size: 1.5em;
+  margin: 16px 0 0 0;
+}
+
+.mainText h3 {
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #5d5c61;
+  font-size: 1.2em;
+}
+
+.mainText p {
+    font-size: 0.9em;
+  }

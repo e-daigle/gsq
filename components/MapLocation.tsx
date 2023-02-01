@@ -21,7 +21,6 @@ const MapLocation = ({ setPos }: Props) => {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
-          console.log( position.coords)
         }
       );
     } else {

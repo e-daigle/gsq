@@ -14,8 +14,10 @@ export interface IParagraph {
 export interface IInline {
   text?: string;
   strong?: string;
-  link?: {
-    to: string;
-    text: string;
-  };
+  link?: ILink;
+}
+
+export interface ILink {
+  to: string;
+  text: string;
 }

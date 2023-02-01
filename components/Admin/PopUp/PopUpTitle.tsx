@@ -1,30 +1,24 @@
-import React, {
-  useState,
-  KeyboardEvent,
-  ChangeEvent,
-  FocusEvent,
-  MouseEvent,
-} from "react";
+import React, { useState, KeyboardEvent, FocusEvent } from "react";
 import { IInline } from "../../../interfaces/IEditable";
 
 interface Props {
-  content: string;
-  handleEdited: (inline: IInline) => void;
+  title: string;
 }
 
-const PopUpSpan = ({ content, handleEdited }: Props) => {
+const PopUpTitle = ({ title }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleKeyboardEvent = (e: KeyboardEvent<HTMLSpanElement>) => {
+  const handleKeyboardEvent = (e: KeyboardEvent<HTMLHeadingElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
       e.currentTarget.blur();
     }
   };
 
-  const handleBlur = (e: FocusEvent<HTMLSpanElement>) => {
+  const handleBlur = (e: FocusEvent<HTMLHeadingElement>) => {
     setIsEditing(false);
-    handleEdited({ text: e.currentTarget.innerHTML });
+    title = e.currentTarget.innerHTML;
+    console.log(title)
   };
 
   const handleClick = () => {
@@ -32,16 +26,16 @@ const PopUpSpan = ({ content, handleEdited }: Props) => {
   };
 
   return (
-    <span
+    <h2
       suppressContentEditableWarning={true}
       contentEditable={isEditing}
       onDoubleClick={handleClick}
       onBlur={handleBlur}
       onKeyDown={handleKeyboardEvent}
     >
-      {content}
-    </span>
+      {title}
+    </h2>
   );
 };
 
-export default PopUpSpan;
+export default PopUpTitle;

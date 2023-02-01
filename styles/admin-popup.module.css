@@ -19,6 +19,7 @@
 }
 
 .buttons {
+  margin-top: 1em;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
@@ -57,15 +58,36 @@
   background-color: white;
 }
 
+.inline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .inline * {
-  display: inline-block;
   width: 100%;
   word-wrap: break-word;
+}
+
+.inline span {
   border: 1px solid gray;
 }
 
-.spanInput {
-  height: auto;
-  resize: none;
-  width: 100%;
+.inline strong {
+  border: 1px solid gray;
+}
+
+.inline *[contenteditable="true"] {
+  background-color: whitesmoke;
+  border-color: orangered;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.link * {
+  border: none;
 }
