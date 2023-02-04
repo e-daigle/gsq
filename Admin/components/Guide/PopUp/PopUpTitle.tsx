@@ -1,11 +1,13 @@
 import React, { useState, KeyboardEvent, FocusEvent } from "react";
-import { IInline } from "../../../interfaces/IEditable";
+import { IInline, IParagraph } from "../../../interfaces/IEditable";
+import styles from "../../../styles/admin-popup.module.css";
 
 interface Props {
   title: string;
+  setP: React.Dispatch<IParagraph>;
 }
 
-const PopUpTitle = ({ title }: Props) => {
+const PopUpTitle = ({ title, setP }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleKeyboardEvent = (e: KeyboardEvent<HTMLHeadingElement>) => {
@@ -17,8 +19,7 @@ const PopUpTitle = ({ title }: Props) => {
 
   const handleBlur = (e: FocusEvent<HTMLHeadingElement>) => {
     setIsEditing(false);
-    title = e.currentTarget.innerHTML;
-    console.log(title)
+    setP({ title: e.target.innerHTML });
   };
 
   const handleClick = () => {
@@ -27,6 +28,7 @@ const PopUpTitle = ({ title }: Props) => {
 
   return (
     <h2
+      className={styles.title}
       suppressContentEditableWarning={true}
       contentEditable={isEditing}
       onDoubleClick={handleClick}

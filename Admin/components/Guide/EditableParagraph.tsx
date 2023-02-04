@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { IInline } from "../../interfaces/IEditable";
+import { IInline } from "../../../interfaces/IEditable";
 
 interface Props {
   inline: IInline[];

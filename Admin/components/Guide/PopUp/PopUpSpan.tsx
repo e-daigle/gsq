@@ -5,7 +5,7 @@ import React, {
   FocusEvent,
   MouseEvent,
 } from "react";
-import { IInline } from "../../../interfaces/IEditable";
+import { IInline } from "../../../../interfaces/IEditable";
 
 interface Props {
   content: string;

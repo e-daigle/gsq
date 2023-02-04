@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/admin-guide-editable.module.css";
+import styles from "../../styles/admin-guide-editable.module.css"
 
 interface Props {
   children: React.ReactNode;

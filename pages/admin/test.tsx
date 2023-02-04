@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import EditableContainer from "../../components/Admin/EditableContainer";
-import EditableParagraph from "../../components/Admin/EditableParagraph";
-import EditableTitle from "../../components/Admin/EditableTitle";
-import EditPopUp from "../../components/Admin/PopUp/EditPopUp";
+import EditableContainer from "../../Admin/components/Guide/EditableContainer";
+import EditableParagraph from "../../Admin/components/Guide/EditableParagraph";
+import EditableTitle from "../../Admin/components/Guide/EditableTitle";
+import EditPopUp from "../../Admin/components/Guide/PopUp/EditPopUp";
 import Editable from "../../components/Editable";
 import IGuideContent, { IInline } from "../../interfaces/IEditable";
 import IContent, { IParagraph } from "../../interfaces/IEditable";
 import { getGuide } from "../../lib/guides";
-import styles from "../../styles/admin-guide.module.css";
+import styles from "../../Admin/styles/admin-guide.module.css"
 
 const test = () => {
   const [guide, setGuide] = useState<IGuideContent>();
@@ -36,9 +36,22 @@ const test = () => {
     setEditingID(pid);
   };
 
-  const handleSave = () => {
+  const handleSave = (paragraph: IParagraph) => {
+    if (!editingID && editingID != 0) return;
+    setGuide((guide) => {
+      if (!guide) return;
+      const paragraphs = guide.paragraphs;
+      paragraphs[editingID] = paragraph;
+      return {
+        title: guide.title,
+        paragraphs: paragraphs,
+      };
+    });
     setEditingID(null);
-    console.log(guide?.paragraphs)
+  };
+
+  const handleCancel = () => {
+    setEditingID(null);
   };
 
   const handleArrow = (up: boolean, pid: number) => {
@@ -60,7 +73,6 @@ const test = () => {
 
   const handleDelete = (pid: number) => {
     if (!guide) return;
-    let paragraphs = guide.paragraphs;
     setGuide((guide) => {
       if (!guide) return;
       return {
@@ -119,6 +131,7 @@ const test = () => {
             <EditPopUp
               paragraph={guide.paragraphs[editingID]}
               handleSave={handleSave}
+              handleCancel={handleCancel}
             />
           ) : null}
         </>

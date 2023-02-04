@@ -7,7 +7,7 @@ import React, {
   useRef,
 } from "react";
 import styles from "../../../styles/admin-popup.module.css";
-import { IInline, ILink } from "../../../interfaces/IEditable";
+import { IInline, ILink } from "../../../../interfaces/IEditable";
 
 interface Props {
   content: ILink;
