@@ -6,10 +6,10 @@ import EditPopUp from "../../Admin/components/Guide/PopUp/EditPopUp";
 import Editable from "../../components/Editable";
 import IGuideContent, { IInline } from "../../interfaces/IEditable";
 import IContent, { IParagraph } from "../../interfaces/IEditable";
-import { getGuide } from "../../lib/Database/guides";
+import { getGuide } from "../../lib/database/guides";
 import styles from "../../Admin/styles/admin-guide.module.css";
 import AdminLayout from "../../Admin/components/AdminLayout";
-import { supabase } from "../../lib/Database/supabase";
+import { supabase } from "../../lib/database/supabase";
 import { useUser } from "@supabase/auth-helpers-react";
 
 const Test = () => {

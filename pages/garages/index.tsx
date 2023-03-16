@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import IGarage from "../../interfaces/IGarage";
 import dynamic from "next/dynamic";
-import { supabase } from "../../lib/Database/supabase";
-import { getGarages } from "../../lib/Database/garages";
+import { supabase } from "../../lib/database/supabase";
+import { getGarages } from "../../lib/database/garages";
 import { redirect } from "next/dist/server/api-utils";
 import MapPlaceHolder from "../../components/MapPlaceHolder";
 import { GetStaticProps } from "next";
-import withLayout from "../../components/withLayout";
+import withLayout from "../../layouts/withLayout";
 import { redirectError } from "../../lib/SSR/redirect";
+import handleError from "../../utils/handleError";
+import { addError } from "../../lib/database/errors";
 
 const MapL = dynamic(import("../../components/MapL"), {
   ssr: false,
@@ -36,6 +38,13 @@ export const getStaticProps = async () => {
       revalidate: 300,
     };
   } catch (error) {
-    return redirectError(error);
+    const errorMessage = handleError(error);
+    addError( errorMessage, "Admin index");
+    return {
+      props: {
+        error: errorMessage
+      },
+      revalidate: 10,
+    };
   }
 };

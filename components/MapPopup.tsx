@@ -1,9 +1,9 @@
 import React from "react";
 import { Popup } from "react-leaflet";
 import IGarage from "../interfaces/IGarage";
-import styles from "../styles/popup.module.css";
+import styles from "../styles/map-popup.module.css";
 
-const GaragePopup = ({ garage }: { garage: IGarage }) => {
+const MapPopup = ({ garage }: { garage: IGarage }) => {
   return (
     <Popup>
       <div className={styles.container}>
@@ -23,4 +23,4 @@ const GaragePopup = ({ garage }: { garage: IGarage }) => {
   );
 };
 
-export default GaragePopup;
+export default MapPopup;

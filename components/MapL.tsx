@@ -15,7 +15,7 @@ import MapLocation from "./MapLocation";
 import IPosition from "../interfaces/IPosition";
 import distance from "../utils/distance";
 import styles from "../styles/map.module.css";
-import GaragePopup from "./GaragePopup";
+import MapPopup from "./MapPopup";
 import Link from "next/link";
 import MapPlaceHolder from "./MapPlaceHolder";
 
@@ -97,7 +97,7 @@ const MapL = ({ garages }: { garages: IGarage[] }) => {
                 })
               }
             >
-              <GaragePopup garage={garage} />
+              <MapPopup garage={garage} />
             </Marker>
           );
         })}

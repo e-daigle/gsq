@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import IGuideContent from "../../interfaces/IGuideContent";
-import { getGuide, getGuidesPaths } from "../../lib/Database/guides";
+import { getGuide, getGuidesPaths } from "../../lib/database/guides";
 import Link from "next/link";
 import { GetStaticPaths, GetStaticProps } from "next";
-import withLayout from "../../components/withLayout";
+import withLayout from "../../layouts/withLayout";
+import handleError from "../../utils/handleError";
+import { addError } from "../../lib/database/errors";
 
 type Props = {
   guide?: IGuideContent;
@@ -98,13 +100,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       revalidate: 300,
     };
   } catch (error) {
-    let errorMessage = "Error";
-    if (typeof error === "string") {
-      errorMessage = error
-    }
-    if (error instanceof Error) {
-      errorMessage = error.message
-    }
-    return { props: { errors: errorMessage }, revalidate: 300 };
+    const errorMessage = handleError(error);
+    addError( errorMessage, "Admin index");
+    return {
+      props: {
+        error: errorMessage
+      },
+      revalidate: 10,
+    };
   }
 };

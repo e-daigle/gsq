@@ -1,12 +1,12 @@
 import "../styles/globals.css";
+import "@emile-daigle/d-dash/themes/default.css"
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import {
-  Session,
   createBrowserSupabaseClient,
 } from "@supabase/auth-helpers-nextjs";
 import { NextPage } from "next";
-import { ReactElement, ReactNode, useState } from "react";
+import { ReactElement, ReactNode, useEffect, useState } from "react";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 
 type NextPageWithLayout = NextPage & {
@@ -22,6 +22,14 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   const getLayout = Component.getLayout ?? ((page) => page);
 
+  useEffect(() => {
+    const updateViewCount = async () => {
+      const { data, error } = await supabaseClient.rpc("update_views");
+
+      if (error) console.error(error);
+    };
+    updateViewCount();
+  }, []);
   return (
     <SessionContextProvider
       supabaseClient={supabaseClient}

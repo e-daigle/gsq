@@ -1,0 +1,69 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px
+}
+
+.imageWrapper {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.inner h1 {
+  font-size: 2.2em;
+  font-weight: 600;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+}
+
+.image img {
+  width: 300px;
+  max-width: 80%;
+  z-index: -1;
+  opacity: 0.5;
+  animation: rotate 2s infinite linear;
+}
+
+.error h2 {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.error p {
+  margin-top: 10px;
+  font-size: 1em;
+  font-weight: 400;
+  color: #ff0033;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

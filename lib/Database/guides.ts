@@ -30,7 +30,7 @@ export const getGuidesPaths = async () => {
     }
 
     if (data) {
-      return data 
+      return data;
     }
   } catch (error) {
     console.log(error);
@@ -52,11 +52,27 @@ export const getGuide = async (name: string) => {
       var guide: IGuideContent = {
         title: data.longTitle,
         paragraphs: data.content,
-      }
+      };
       return guide;
     }
   } catch (error) {
     console.log(error);
     throw error;
+  }
+};
+
+export const getGuidesCount = async () => {
+  try {
+    const { error, status, count } = await supabase.from("guides").select("*", { count: 'exact', head: true });
+
+    if (error && status !== 406) {
+      throw error;
+    }
+    if (count !== null) return count;
+
+    return null;
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 };

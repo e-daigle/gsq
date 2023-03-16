@@ -2,21 +2,24 @@ import { GetStaticProps } from "next";
 import React, { useEffect, useState } from "react";
 import GuideCard from "../../components/GuideCard";
 import SearchBar from "../../components/SearchBar";
-import withLayout from "../../components/withLayout";
+import withLayout from "../../layouts/withLayout";
 import IGuide from "../../interfaces/IGuide";
-import { getGuides } from "../../lib/Database/guides";
+import { getGuides } from "../../lib/database/guides";
 import styles from "../../styles/guides.module.css";
 import { redirectError } from "../../lib/SSR/redirect";
+import handleError from "../../utils/handleError";
+import ErrorPage from "../../components/ErrorPage";
+import { addError } from "../../lib/database/errors";
 
 type Props = {
   guides?: IGuide[];
-  errors?: string;
+  error?: string;
 };
 
-const Guides = ({ guides, errors }: Props) => {
+const Guides = ({ guides, error }: Props) => {
   const [searchWord, setSearchWord] = useState("");
-  if (errors) return <div>Error...</div>;
-  if (!guides?.length) return <div>missing data...</div>;
+  if (error) return <ErrorPage message={error}/>
+  if (!guides) return <ErrorPage message={"Données manquante"}/>
 
   return (
     <div className={styles.container}>
@@ -51,6 +54,13 @@ export const getStaticProps: GetStaticProps = async () => {
       revalidate: 300,
     };
   } catch (error) {
-    return redirectError(error);
+    const errorMessage = handleError(error);
+    addError( errorMessage, "Admin index");
+    return {
+      props: {
+        error: errorMessage
+      },
+      revalidate: 10,
+    };
   }
 };

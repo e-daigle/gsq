@@ -1,52 +1,126 @@
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import {
-  SupabaseClient,
-  User,
-  useSupabaseClient,
-  useUser,
-} from "@supabase/auth-helpers-react";
+  DDashLargeSection,
+  DDashSmallCard,
+  DDashSmallSection,
+  DDashTable,
+} from "@emile-daigle/d-dash";
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { GetServerSidePropsContext } from "next";
-import React from "react";
-import AdminLayout from "../../Admin/components/AdminLayout";
+import React, { useEffect } from "react";
 import withAdminLayout from "../../Admin/components/withAdminLayout";
-import { checkServerAuth } from "../../Admin/lib/SupaBase/checkSession";
-import { signOut } from "../../Admin/lib/SupaBase/signIn";
-import { Database } from "../../lib/Database/supabase";
+import { checkServerAuth } from "../../lib/database/checkSession";
+import { getLastMonthViews } from "../../lib/database/stats";
+import IconUsers from "../../components/icons/IconUsers";
+import { getGaragesCount } from "../../lib/database/garages";
+import { getGuidesCount } from "../../lib/database/guides";
+import { Database } from "../../lib/database/supabase";
+import {
+  addError,
+  getErrorsCount,
+  getUnHandledErrors,
+} from "../../lib/database/errors";
+import { signOut } from "../../lib/database/signIn";
+import IErrorRecord from "../../interfaces/IErrorRecord";
+import handleError from "../../utils/handleError";
+import { errorsColumns } from "../../lib/tableColumns";
 
-const Index = ({ user }: { user: User }) => {
+type Props = {
+  viewsCount: number | null;
+  errorsCount: number | null;
+  garagesCount: number | null;
+  guidesCount: number | null;
+  errorsData: IErrorRecord[];
+};
+
+const Index = ({
+  viewsCount,
+  errorsCount,
+  garagesCount,
+  guidesCount,
+  errorsData
+}: Props) => {
   const supabaseClient = useSupabaseClient<Database>();
-  const user2 = useUser();
+
   return (
-    <div>
-      Hello {user.id} {user2?.id}
-      <button onClick={() => signOut(supabaseClient)}>LogOut</button>
-    </div>
+    <>
+      <DDashSmallSection>
+        <DDashSmallCard
+          title="Nombre d'erreurs 30 derniers jours"
+          value={errorsCount !== null ? errorsCount.toString() : "Erreur"}
+        />
+        <DDashSmallCard
+          title="Utilisateurs ce mois"
+          value={viewsCount !== null ? viewsCount.toString() : "Erreur"}
+          image={{ component: <IconUsers />, type: "icon" }}
+        />
+      </DDashSmallSection>
+      <DDashSmallSection>
+        <DDashSmallCard
+          title="Nombre de garages"
+          value={garagesCount !== null ? garagesCount.toString() : "Erreur"}
+        />
+        <DDashSmallCard
+          title="Nombre de guides"
+          value={guidesCount !== null ? guidesCount.toString() : "Erreur"}
+        />
+      </DDashSmallSection>
+      <DDashLargeSection>
+        <DDashTable columns={errorsColumns} data={errorsData} uniqueField={"id"} numberPerPage={10} title="Erreurs à régler"/>
+      </DDashLargeSection>
+      <DDashSmallSection>
+        <DDashSmallCard
+          title="Nombre de garages"
+          value={garagesCount !== null ? garagesCount.toString() : "Erreur"}
+        />
+        <button onClick={() => signOut(supabaseClient)}>Sign out</button>
+        <p>{true}</p>
+      </DDashSmallSection>
+    </>
   );
 };
 
 export default Index;
 
-Index.getLayout = withAdminLayout()
+Index.getLayout = withAdminLayout();
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const supabase = createServerSupabaseClient(ctx);
-  const lol = ctx.req.cookies['supabase-auth-token']
-  const lol2 = JSON.parse(JSON.stringify(lol));
-  console.log(lol2[0]);
-  console.log(await supabase.auth.getUser(ctx.req.cookies['supabase-auth-token']))
-  const session = await checkServerAuth(supabase);
-  if (!session)
+  try {
+    const supabase = createServerSupabaseClient<Database>(ctx);
+    const session = await checkServerAuth(supabase);
+    if (!session)
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    const viewsCount = await getLastMonthViews(supabase);
+    if (!viewsCount) await addError("View count", "Admin index");
+    const garagesCount = await getGaragesCount();
+    if (!garagesCount) await addError("Garages count", "Admin index");
+    const guidesCount = await getGuidesCount();
+    if (!guidesCount) await addError("Guides count", "Admin index");
+    const errorsCount = await getErrorsCount(supabase);
+    if (!errorsCount) await addError("Errors count", "Admin index");
+
+    var errorsData: IErrorRecord[] = [];
+    try {
+      errorsData = await getUnHandledErrors(supabase);
+    } catch (error) {
+      const errorMessage = handleError(error);
+      addError(errorMessage, "Admin index");
+    }
     return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
+      props: {
+        viewsCount,
+        errorsCount,
+        garagesCount,
+        guidesCount,
+        errorsData,
       },
     };
-
-  return {
-    props: {
-      initialSession: session,
-      user: session.user,
-    },
-  };
+  } catch (error) {
+    console.log(error);
+  }
 };

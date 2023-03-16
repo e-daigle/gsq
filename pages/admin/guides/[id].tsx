@@ -6,12 +6,12 @@ import EditPopUp from "../../../Admin/components/Guide/PopUp/EditPopUp";
 import Editable from "../../../components/Editable";
 import IGuideContent, { IInline } from "../../../interfaces/IEditable";
 import IContent, { IParagraph } from "../../../interfaces/IEditable";
-import { getGuide } from "../../../lib/Database/guides";
+import { getGuide } from "../../../lib/database/guides";
 import styles from "../../../Admin/styles/admin-guide.module.css";
 import AdminLayout from "../../../Admin/components/AdminLayout";
 import withAdminLayout from "../../../Admin/components/withAdminLayout";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { checkServerAuth } from "../../../Admin/lib/SupaBase/checkSession";
+import { checkServerAuth } from "../../../lib/database/checkSession";
 import { GetServerSidePropsContext } from "next";
 
 type Props = {

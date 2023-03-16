@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import HomeCards from "../components/HomeCards";
 import Hero from "../components/Hero";
-import withLayout from "../components/withLayout";
+import withLayout from "../layouts/withLayout";
 
 export default function Home() {
   return (
