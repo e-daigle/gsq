@@ -68,7 +68,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const data = await getGuidesPaths();
     if (data) {
       const paths = data.map((post) => ({
-        params: { link: JSON.stringify(post.link) },
+        params: { link: post.link },
       }));
       return {
         paths: paths,
@@ -90,6 +90,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const link = params?.link;
+    console.log(link);
     if (!link || typeof link !== "string") throw new Error("Erreur de lien.");
     const guide = await getGuide(link);
     if (!guide) throw new Error("Pas de guide à ce lien");
