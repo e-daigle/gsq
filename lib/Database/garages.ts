@@ -1,5 +1,6 @@
+import { SupabaseClient } from "@supabase/supabase-js";
 import IGarage from "../../interfaces/IGarage";
-import { supabase } from "./supabase";
+import { Database, supabase } from "./supabase";
 
 export const getGarages = async () => {
   try {
@@ -31,5 +32,21 @@ export const getGaragesCount = async () => {
   } catch (error) {
     console.log(error);
     return null;
+  }
+};
+
+export const deleteGarage = async (supabase: SupabaseClient<Database>, id: number) => {
+  try {
+    console.log(supabase)
+    console.log(id);
+    const { data, error } = await supabase
+      .from("errors")
+      .select("*").eq("handled", false);
+    if (error) {
+      throw error;
+    }
+    return data
+  } catch (error) {
+    throw error
   }
 };

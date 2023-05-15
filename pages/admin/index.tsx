@@ -24,6 +24,7 @@ import { signOut } from "../../lib/database/signIn";
 import IErrorRecord from "../../interfaces/IErrorRecord";
 import handleError from "../../utils/handleError";
 import { errorsColumns } from "../../lib/tableColumns";
+import ErrorPage from "../../components/ErrorPage";
 
 type Props = {
   viewsCount: number | null;
@@ -31,6 +32,7 @@ type Props = {
   garagesCount: number | null;
   guidesCount: number | null;
   errorsData: IErrorRecord[];
+  error?: string;
 };
 
 const Index = ({
@@ -38,10 +40,11 @@ const Index = ({
   errorsCount,
   garagesCount,
   guidesCount,
-  errorsData
+  errorsData,
+  error
 }: Props) => {
   const supabaseClient = useSupabaseClient<Database>();
-
+  if (error) return <ErrorPage message={error}/>
   return (
     <>
       <DDashSmallSection>
@@ -66,7 +69,13 @@ const Index = ({
         />
       </DDashSmallSection>
       <DDashLargeSection>
-        <DDashTable columns={errorsColumns} data={errorsData} uniqueField={"id"} numberPerPage={10} title="Erreurs à régler"/>
+        <DDashTable
+          columns={errorsColumns}
+          data={errorsData}
+          uniqueField={"id"}
+          numberPerPage={10}
+          title="Erreurs à régler"
+        />
       </DDashLargeSection>
       <DDashSmallSection>
         <DDashSmallCard
@@ -122,5 +131,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     };
   } catch (error) {
     console.log(error);
+    const errorMessage = handleError(error);
+    addError(errorMessage, "Admin index");
   }
 };

@@ -16,3 +16,26 @@ export const errorsColumns = [
     field: "error",
   },
 ];
+
+export const garagesColumns = [
+  {
+    field: "id",
+    title: "ID",
+  },
+  {
+    field: "name",
+    title: "Nom",
+  },
+  {
+    field: "link",
+    title: "Lien",
+  },
+  {
+    field: "phone",
+    title: "Téléphone",
+  },
+  {
+    field: "address",
+    title: "Adresse",
+  },
+];
