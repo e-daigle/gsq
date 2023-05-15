@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import IGuideContent from "../../interfaces/IGuideContent";
-import { getGuide, getGuidesPaths } from "../../lib/database/guides";
+import { getGuide, getGuidesPaths } from "../../lib/Database/guides";
 import Link from "next/link";
 import { GetStaticPaths, GetStaticProps } from "next";
 import withLayout from "../../layouts/withLayout";
 import handleError from "../../utils/handleError";
-import { addError } from "../../lib/database/errors";
+import { addError } from "../../lib/Database/errors";
 
 type Props = {
   guide?: IGuideContent;

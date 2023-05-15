@@ -7,8 +7,8 @@ import React from "react";
 import withAdminLayout from "../../../Admin/components/withAdminLayout";
 import ErrorPage from "../../../components/ErrorPage";
 import IGarage from "../../../interfaces/IGarage";
-import { checkServerAuth } from "../../../lib/database/checkSession";
-import { deleteGarage, getGarages } from "../../../lib/database/garages";
+import { checkServerAuth } from "../../../lib/Database/checkSession";
+import { deleteGarage, getGarages } from "../../../lib/Database/garages";
 import { garagesColumns } from "../../../lib/tableColumns";
 import { Database } from "../../../supabase";
 

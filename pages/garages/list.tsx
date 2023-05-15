@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import IGarage from "../../interfaces/IGarage";
 import GarageCard from "../../components/GarageCard";
 import styles from "../../styles/garage.module.css";
-import { getGarages } from "../../lib/database/garages";
+import { getGarages } from "../../lib/Database/garages";
 import withLayout from "../../layouts/withLayout";
 import { redirectError } from "../../lib/SSR/redirect";
 import handleError from "../../utils/handleError";
-import { addError } from "../../lib/database/errors";
+import { addError } from "../../lib/Database/errors";
 
 const Garages = ({ garages }: { garages: IGarage[] }) => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import { Database } from "../lib/database/supabase";
-import { signIn } from "../lib/database/signIn";
+import { Database } from "../lib/Database/supabase";
+import { signIn } from "../lib/Database/signIn";
 import Link from "next/link";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 

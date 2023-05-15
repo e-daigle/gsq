@@ -9,13 +9,13 @@ import {
 import { GetServerSidePropsContext } from "next";
 import React, { useEffect } from "react";
 import withAdminLayout from "../../Admin/components/withAdminLayout";
-import { checkServerAuth } from "../../lib/database/checkSession";
-import { getLastMonthViews } from "../../lib/database/stats";
+import { checkServerAuth } from "../../lib/Database/checkSession";
+import { getLastMonthViews } from "../../lib/Database/stats";
 import IconUsers from "../../components/icons/IconUsers";
-import { getGaragesCount } from "../../lib/database/garages";
-import { getGuidesCount } from "../../lib/database/guides";
-import { Database, supabase } from "../../lib/database/supabase";
-import { getErrorsCount } from "../../lib/database/errors";
+import { getGaragesCount } from "../../lib/Database/garages";
+import { getGuidesCount } from "../../lib/Database/guides";
+import { Database, supabase } from "../../lib/Database/supabase";
+import { getErrorsCount } from "../../lib/Database/errors";
 
 type Props = {
   viewsCount: number | null;

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import IGarage from "../../interfaces/IGarage";
 import dynamic from "next/dynamic";
-import { supabase } from "../../lib/database/supabase";
-import { getGarages } from "../../lib/database/garages";
+import { supabase } from "../../lib/Database/supabase";
+import { getGarages } from "../../lib/Database/garages";
 import { redirect } from "next/dist/server/api-utils";
 import MapPlaceHolder from "../../components/MapPlaceHolder";
 import { GetStaticProps } from "next";
 import withLayout from "../../layouts/withLayout";
 import { redirectError } from "../../lib/SSR/redirect";
 import handleError from "../../utils/handleError";
-import { addError } from "../../lib/database/errors";
+import { addError } from "../../lib/Database/errors";
 
 const MapL = dynamic(import("../../components/MapL"), {
   ssr: false,

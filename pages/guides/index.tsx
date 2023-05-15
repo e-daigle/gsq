@@ -4,12 +4,12 @@ import GuideCard from "../../components/GuideCard";
 import SearchBar from "../../components/SearchBar";
 import withLayout from "../../layouts/withLayout";
 import IGuide from "../../interfaces/IGuide";
-import { getGuides } from "../../lib/database/guides";
+import { getGuides } from "../../lib/Database/guides";
 import styles from "../../styles/guides.module.css";
 import { redirectError } from "../../lib/SSR/redirect";
 import handleError from "../../utils/handleError";
 import ErrorPage from "../../components/ErrorPage";
-import { addError } from "../../lib/database/errors";
+import { addError } from "../../lib/Database/errors";
 
 type Props = {
   guides?: IGuide[];

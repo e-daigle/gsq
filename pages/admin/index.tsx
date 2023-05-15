@@ -9,18 +9,18 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { GetServerSidePropsContext } from "next";
 import React, { useEffect } from "react";
 import withAdminLayout from "../../Admin/components/withAdminLayout";
-import { checkServerAuth } from "../../lib/database/checkSession";
-import { getLastMonthViews } from "../../lib/database/stats";
+import { checkServerAuth } from "../../lib/Database/checkSession";
+import { getLastMonthViews } from "../../lib/Database/stats";
 import IconUsers from "../../components/icons/IconUsers";
-import { getGaragesCount } from "../../lib/database/garages";
-import { getGuidesCount } from "../../lib/database/guides";
-import { Database } from "../../lib/database/supabase";
+import { getGaragesCount } from "../../lib/Database/garages";
+import { getGuidesCount } from "../../lib/Database/guides";
+import { Database } from "../../lib/Database/supabase";
 import {
   addError,
   getErrorsCount,
   getUnHandledErrors,
-} from "../../lib/database/errors";
-import { signOut } from "../../lib/database/signIn";
+} from "../../lib/Database/errors";
+import { signOut } from "../../lib/Database/signIn";
 import IErrorRecord from "../../interfaces/IErrorRecord";
 import handleError from "../../utils/handleError";
 import { errorsColumns } from "../../lib/tableColumns";
