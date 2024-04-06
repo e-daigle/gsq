@@ -8,7 +8,6 @@ export default function Home() {
   return (
     <>
       <Head>
-        
         <meta
           name="keywords"
           content="Subaru, Québec, voiture, garage, communauté, entretien, modification, guide"
@@ -28,7 +27,6 @@ export default function Home() {
           content="La source d'information pour les amateurs de Subaru du Québec."
           key="og:description"
         />
-        <meta property="og:type" content="website" />
         <meta
           property="og:url"
           content="https://guidesubaruquebec.com"
