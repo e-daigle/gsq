@@ -60,9 +60,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         />
         <meta
           property="og:image"
-          content="https://guidesubaruquebec.com/GSQ.png"
+          content="https://guidesubaruquebec.com/GSQ_OG.png"
         />
         {/*     <meta name="theme-color" content="#004488"/> */}
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
       </Head>
       <SessionContextProvider
         supabaseClient={supabaseClient}
