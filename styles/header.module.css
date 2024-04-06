@@ -14,24 +14,18 @@
 
 .container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  width: 90%;
 }
 
 .logo {
-  position: absolute;
-  left: 2em;
+  display: flex;
 }
 
 .navMenu__icon {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(-100%, 60%);
-  font-size: 1.8rem;
   cursor: pointer;
-  color: #fff
+  display: flex;
 }
 
 .navMenu {
@@ -61,6 +55,7 @@
   text-decoration: none;
   padding: 2rem;
   width: 100%;
+  height: auto;
   display: table;
 }
 
@@ -77,6 +72,7 @@
 
   .container {
     height: 100%;
+    max-width: 1800px;
   }  
 
    .navMenu__link {

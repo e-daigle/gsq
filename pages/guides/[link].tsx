@@ -22,6 +22,7 @@ const Guide = ({ guide, errors }: Props) => {
 
   return (
     <>
+    
       {guide ? (
         <div className={styles.mainText}>
           <h2>{guide.title}</h2>

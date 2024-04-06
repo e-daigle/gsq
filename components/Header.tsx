@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../styles/header.module.css";
 import Image from "next/image";
+import IconHamburger from "./icons/IconHamburger";
+import IconClose from "./icons/IconClose";
 
 const Header = () => {
   const [click, setClick] = useState(false);
@@ -17,7 +19,7 @@ const Header = () => {
             <img src="/GSQ.png" alt="Logo" width={75} />
           </Link>
           <div className={styles.navMenu__icon} onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+            {click ? <IconClose/> : <IconHamburger/>}
           </div>
           <ul
             className={
