@@ -6,7 +6,6 @@ import withLayout from "../../layouts/withLayout";
 import IGuide from "../../interfaces/IGuide";
 import { getGuides } from "../../lib/Database/guides";
 import styles from "../../styles/guides.module.css";
-import { redirectError } from "../../lib/SSR/redirect";
 import handleError from "../../utils/handleError";
 import ErrorPage from "../../components/ErrorPage";
 import { addError } from "../../lib/Database/errors";
@@ -24,7 +23,7 @@ const Guides = ({ guides, error }: Props) => {
   return (
     <div className={styles.container}>
       <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
-      <div className={styles.cards}>
+     { <div className={styles.cards}>
         {guides
           .filter((guide) =>
             (guide.titre.toLowerCase() + guide.desc.toLowerCase()).includes(
@@ -34,7 +33,7 @@ const Guides = ({ guides, error }: Props) => {
           .map((guide) => (
             <GuideCard key={guide.id} guide={guide} />
           ))}
-      </div>
+      </div>}
     </div>
   );
 };

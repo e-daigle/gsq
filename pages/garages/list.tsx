@@ -4,7 +4,6 @@ import GarageCard from "../../components/GarageCard";
 import styles from "../../styles/garage.module.css";
 import { getGarages } from "../../lib/Database/garages";
 import withLayout from "../../layouts/withLayout";
-import { redirectError } from "../../lib/SSR/redirect";
 import handleError from "../../utils/handleError";
 import { addError } from "../../lib/Database/errors";
 

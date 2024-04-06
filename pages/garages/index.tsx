@@ -7,7 +7,6 @@ import { redirect } from "next/dist/server/api-utils";
 import MapPlaceHolder from "../../components/MapPlaceHolder";
 import { GetStaticProps } from "next";
 import withLayout from "../../layouts/withLayout";
-import { redirectError } from "../../lib/SSR/redirect";
 import handleError from "../../utils/handleError";
 import { addError } from "../../lib/Database/errors";
 

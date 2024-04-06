@@ -1,0 +1,113 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background: #f2f2f2;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #fff;
+  width: 500px;
+  max-width: 90%;
+  padding: 2em 1em 2em 1em;
+  border-radius: 20px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  align-items: center;
+}
+
+.field {
+  position: relative;
+  width: 100%;
+}
+
+.field input {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1;
+  display: block;
+  width: 100%;
+  height: 35px;
+  margin-top: 4px;
+  background: 0 0;
+  padding: 0 5px;
+  border-bottom: 2px solid #adadad;
+}
+
+.field label {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #999;
+  line-height: 1.2;
+  display: block;
+  width: 100%;
+  position: absolute;
+  pointer-events: none;
+  top: 10px;
+  left: 0;
+  padding-left: 4px;
+  transition: 0.3s;
+}
+
+.field input:focus ~ label,
+.field input:valid ~ label {
+  top: -7px;
+  left: 0;
+  font-size: 0.9em;
+}
+
+.field input.error{
+  border-bottom: 2px solid #ff3327;
+}
+.errorText {
+  padding-left: 4px;
+  padding-top: 1px;
+  font-size: 0.75em;
+  color: #ff3327;
+}
+
+.button {
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 35px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  width: 180px;
+  font-size: 16px;
+  font-weight: 600;
+  background-image: linear-gradient(
+    to right,
+    #7395ae,
+    #557a95,
+    #7395ae,
+    #557a95
+  );
+  -o-transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+
+.button:hover {
+  background-position: 50% 0;
+}
+

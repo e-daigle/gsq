@@ -7,6 +7,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import withLayout from "../../layouts/withLayout";
 import handleError from "../../utils/handleError";
 import { addError } from "../../lib/Database/errors";
+import styles from "../../styles/guide.module.css"
 
 type Props = {
   guide?: IGuideContent;
@@ -22,7 +23,7 @@ const Guide = ({ guide, errors }: Props) => {
   return (
     <>
       {guide ? (
-        <div className="maintext">
+        <div className={styles.mainText}>
           <h2>{guide.title}</h2>
           {guide.paragraphs.map((guide, idx) => (
             <React.Fragment key={idx}>
@@ -43,12 +44,12 @@ const Guide = ({ guide, errors }: Props) => {
                   ))}
                 </p>
               )}
-              {guide.image && (
-                <div className="imageBPV">
+              {/*guide.image && (
+                {<div className="imageBPV">
                   <img alt="Bypass Valve" src={guide.image.src} />
                   <h4 className="desc">{guide.image.desc}</h4>
-                </div>
-              )}
+              </div>}
+              )*/}
             </React.Fragment>
           ))}
         </div>
@@ -90,7 +91,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const link = params?.link;
-    console.log(link);
+
     if (!link || typeof link !== "string") throw new Error("Erreur de lien.");
     const guide = await getGuide(link);
     if (!guide) throw new Error("Pas de guide à ce lien");
@@ -98,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       props: {
         guide,
       },
-      revalidate: 300,
+      revalidate: 3000,
     };
   } catch (error) {
     const errorMessage = handleError(error);

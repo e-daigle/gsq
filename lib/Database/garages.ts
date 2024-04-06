@@ -7,6 +7,7 @@ export const getGarages = async () => {
     const { data, error, status } = await supabase
       .from("garages")
       .select("id, image, name, link, image, phone, address, marker, pos");
+      console.log(data);
     if (error && status !== 406) {
       throw error;
     }

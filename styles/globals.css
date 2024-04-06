@@ -15,6 +15,11 @@ html {
   font-family: 'PT Sans', sans-serif;
 }
 
+#__next{
+  height: 100%
+}
+
+
 .heroParallax {
   position: fixed;
   z-index: -1;
@@ -25,98 +30,4 @@ html {
 .marginParallax {
   background-color: #fff;
   margin-top: 100vh;
-}
-
-
-
-.mainText {
-  padding: 0.6em;
-  text-align: justify;
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.mainText h2{
-  font-weight: bold;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #5D5c61;
-  font-size: 1.5em;
-  margin: 10px 0 0 0;
-}
-
-.mainText h3{
-  font-weight: bold;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #5D5c61;
-  font-size: 1em;
-  margin: 0.5em  0;
-}
-.mainText p {
-  color: #557a95;
-  font-size: 0.75em;
-  margin: 8px 0;
-}
-.block{
-  margin: 8px 0;
-}
-.inline {
-  display: inline;
-}
-.mainText a{
-  text-decoration: none;
-}
-.mainText ul{
-  margin-top: 10px;
-  margin-left: 10px;
-}
-.mainText li{
-  font-size: 0.7em;
-}
-.mainText img{
-  float: right;
-  width: 90%;
-}
-.imageBPV{
-  margin: 10px 0px 0px 2px ;
-  width: 30%;
-  float: right;
-}
-.imageAP{
-  margin: 10px 0px 0px 2px ;
-  width: 40%;
-  float: right;
-}
-.desc{
-  margin-top: 2px;
-  font-size: 0.65em;
-  text-align: center;
-}
-
-@media (min-width: 550px) {
-  /*-------Main Text -----*/
-  .mainText h2{
-      margin: 30px 0 0 0;
-      font-size: 2.5em ;
-  }
-  
-  .mainText h3{
-      font-size: 1.2em;
-  }
-  .mainText p, span{
-      font-size: 1em;
-  }
-  .mainText li{
-      font-size: 0.8em;
-  }
-
-  .imageBPV{
-      width: 20%;
-  }
-  .imageAP{
-      width: 32%;
-  }
-  .desc{
-      font-size: 0.75em;
-  }
 }

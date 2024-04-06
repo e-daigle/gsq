@@ -5,9 +5,7 @@ export const signIn = async (email: string, password: string, supabaseClient : S
     email: email,
     password: password,
   });
-  if (error) return error;
-  if (data?.session) return data.session;
-  return null;
+  return { data, error };
 };
 export const signOut = async (supabaseClient : SupabaseClient) => {
   const { error } = await supabaseClient.auth.signOut();

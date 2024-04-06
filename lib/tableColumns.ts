@@ -6,6 +6,10 @@ export const errorsColumns = [
   {
     title: "Date",
     field: "created_at",
+    filter: (input: string): string => {
+      const filteredString = input.slice(0,10);
+      return filteredString;
+    }
   },
   {
     title: "Page",
@@ -37,5 +41,24 @@ export const garagesColumns = [
   {
     field: "address",
     title: "Adresse",
+  }
+];
+
+export const guidesColumns = [
+  {
+    field: "id",
+    title: "ID",
   },
+  {
+    field: "titre",
+    title: "Titre",
+  },
+  {
+    field: "link",
+    title: "Lien",
+  },
+  {
+    field: "desc",
+    title: "Description",
+  }
 ];

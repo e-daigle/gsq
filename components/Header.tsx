@@ -51,15 +51,15 @@ const Header = () => {
                 Guides
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
-                href="/products"
+                href="/admin"
                 className={styles.navMenu__link}
                 onClick={closeMobileMenu}
               >
-                Products
+                Administrateur
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </header>

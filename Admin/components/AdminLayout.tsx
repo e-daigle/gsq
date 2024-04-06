@@ -17,10 +17,6 @@ const links = [
     link: "/admin/garages",
     displayName: "Garages",
   },
-  {
-    link: "/admin/email",
-    displayName: "Courriel",
-  },
 ];
 
 const dialogConfig = {
@@ -33,10 +29,9 @@ const dialogConfig = {
 export default function AdminLayout({ children }: Props) {
   return (
     <DDashContainer
-      nav={{ component: <DDashSideMenu links={links} />, position: "left" }}
+      nav={{ component: <DDashSideMenu links={links} image={{src:"/GSQ.png", alt:"Logo"}} />, position: "left" }}
       defaultDialogText={dialogConfig}
     >
-      <p></p>
       {children}
     </DDashContainer>
   );

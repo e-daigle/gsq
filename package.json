@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emile-daigle/d-dash": "^1.1.2",
+    "@emile-daigle/d-dash": "^1.1.3",
     "@next/font": "13.1.1",
     "@react-google-maps/api": "^2.17.1",
     "@supabase/auth-helpers-nextjs": "^0.5.4",

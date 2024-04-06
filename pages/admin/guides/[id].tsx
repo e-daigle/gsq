@@ -13,6 +13,7 @@ import withAdminLayout from "../../../Admin/components/withAdminLayout";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { checkServerAuth } from "../../../lib/Database/checkSession";
 import { GetServerSidePropsContext } from "next";
+import { DDashLargeSection } from "@emile-daigle/d-dash";
 
 type Props = {
   guideProp?: IGuideContent;
@@ -107,39 +108,38 @@ const Guide = ({ guideProp, errors }: Props) => {
   };
 
   return (
-    <>
-      {guide ? (
-        <>
-          <div className={styles.container}>
-            <div className={styles.controls}>ALLO</div>
-            <div className={styles.mainText}>
-              <h2>{guide.title}</h2>
-              {guide.paragraphs.map((paragraph, pid) => (
-                <EditableContainer
-                  key={pid}
-                  handleArrow={(up: boolean) => handleArrow(up, pid)}
-                  handleOpenPopUp={() => handleOpenPopUp(pid)}
-                  handleDelete={() => handleDelete(pid)}
-                  handleAdd={(type: string) => handleAdd(pid, type)}
-                >
-                  {renderSwitch(paragraph)}
-                </EditableContainer>
-              ))}
+      <DDashLargeSection>
+        {guide ? (
+          <>
+            <div className={styles.container}>
+              <div className={styles.mainText}>
+                <h2>{guide.title}</h2>
+                {guide.paragraphs.map((paragraph, pid) => (
+                  <EditableContainer
+                    key={pid}
+                    handleArrow={(up: boolean) => handleArrow(up, pid)}
+                    handleOpenPopUp={() => handleOpenPopUp(pid)}
+                    handleDelete={() => handleDelete(pid)}
+                    handleAdd={(type: string) => handleAdd(pid, type)}
+                  >
+                    {renderSwitch(paragraph)}
+                  </EditableContainer>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {editingID != null ? (
-            <EditPopUp
-              paragraph={guide.paragraphs[editingID]}
-              handleSave={handleSave}
-              handleCancel={handleCancel}
-            />
-          ) : null}
-        </>
-      ) : (
-        <p>Erreur</p>
-      )}
-    </>
+            {editingID != null ? (
+              <EditPopUp
+                paragraph={guide.paragraphs[editingID]}
+                handleSave={handleSave}
+                handleCancel={handleCancel}
+              />
+            ) : null}
+          </>
+        ) : (
+          <p>Erreur</p>
+        )}
+      </DDashLargeSection>
   );
 };
 
