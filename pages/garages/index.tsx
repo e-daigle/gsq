@@ -9,6 +9,7 @@ import { GetStaticProps } from "next";
 import withLayout from "../../layouts/withLayout";
 import handleError from "../../utils/handleError";
 import { addError } from "../../lib/Database/errors";
+import Head from "next/head";
 
 const MapL = dynamic(import("../../components/MapL"), {
   ssr: false,
@@ -19,7 +20,31 @@ const MapL = dynamic(import("../../components/MapL"), {
 
 const Garages = ({ garages }: { garages: IGarage[] }) => {
   return (
-    <>{garages.length ? <MapL garages={garages} /> : <MapPlaceHolder />}</>
+    <>
+      <Head>
+        <meta
+          name="description"
+          content="Retrouvez des informations sur les garages spécialisés Subaru à l'aide d'une carte interactive qui est constamment mise à jour."
+          key="description"
+        />
+        <meta
+          property="og:title"
+          content="Guide Subaru Québec - Garages"
+          key="og:title"
+        />
+        <meta
+          property="og:description"
+          content="Carte interactive des garages spécialisés Subaru au Québec."
+          key="og:description"
+        />
+        <meta
+          property="og:url"
+          content="https://guidesubaruquebec.com/garages"
+          key="og:url"
+        />
+      </Head>
+      {garages.length ? <MapL garages={garages} /> : <MapPlaceHolder />}
+    </>
   );
 };
 
@@ -38,10 +63,10 @@ export const getStaticProps = async () => {
     };
   } catch (error) {
     const errorMessage = handleError(error);
-    addError( errorMessage, "Admin index");
+    addError(errorMessage, "Admin index");
     return {
       props: {
-        error: errorMessage
+        error: errorMessage,
       },
       revalidate: 10,
     };
