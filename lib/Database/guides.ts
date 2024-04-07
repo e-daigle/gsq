@@ -6,7 +6,7 @@ export const getGuides = async () => {
   try {
     const { data, error, status } = await supabase
       .from("guides")
-      .select("id, titre, desc, link, image");
+      .select("id, titre, desc, link, image, modified_at");
     if (error && status !== 406) {
       throw error;
     }

@@ -75,6 +75,7 @@ export interface Database {
         Row: {
           content: IGuideContent["paragraphs"];
           created_at: string | null;
+          modified_at: string;
           desc: string;
           id: number;
           image: string;
@@ -85,6 +86,7 @@ export interface Database {
         Insert: {
           content: Json;
           created_at?: string | null;
+          modified_at?: string;
           desc?: string;
           id?: number;
           image?: string;
@@ -95,6 +97,7 @@ export interface Database {
         Update: {
           content?: Json;
           created_at?: string | null;
+          modified_at?: string;
           desc?: string;
           id?: number;
           image?: string;
