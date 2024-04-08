@@ -1,18 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
-const recipeData = {
-  "@context": "https://schema.org/",
-  "@type": "Recipe",
-  name: "Party Coffee Cake",
-  author: {
-    "@type": "Person",
-    name: "Mary Stone",
-  },
-  datePublished: "2018-03-10",
-  description: "This coffee cake is awesome and perfect for parties.",
-  prepTime: "PT20M",
-};
-
 export default function Document() {
   return (
     <Html lang="fr">
