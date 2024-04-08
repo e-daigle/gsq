@@ -1,5 +1,18 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
+const recipeData = {
+  "@context": "https://schema.org/",
+  "@type": "Recipe",
+  name: "Party Coffee Cake",
+  author: {
+    "@type": "Person",
+    name: "Mary Stone",
+  },
+  datePublished: "2018-03-10",
+  description: "This coffee cake is awesome and perfect for parties.",
+  prepTime: "PT20M",
+};
+
 export default function Document() {
   return (
     <Html lang="fr">
@@ -17,6 +30,15 @@ export default function Document() {
           content="https://guidesubaruquebec.com/GSQ_OG.png"
         />
         <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "WebSite",
+            name: "Guide Subaru Québec",
+            description:
+              "Guide Subaru Québec est dédié à la communauté Subaru au Québec. Retrouvez des informations sur les garages spécialisés Subaru ainsi que des guides sur la modification et l'entretien de votre véhicule.",
+          })}
+        </script>
       </Head>
       <body>
         <Main />
