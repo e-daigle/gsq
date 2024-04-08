@@ -1,11 +1,16 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
-const websiteData = {
-  "@context": "https://schema.org/",
-  "@type": "WebSite",
-  "name": "Guide Subaru Québec",
-  "description": "Guide Subaru Québec est dédié à la communauté Subaru au Québec. Retrouvez des informations sur les garages spécialisés Subaru ainsi que des guides sur la modification et l'entretien de votre véhicule."
-};
+export function addJsonLd(name: string, description: string) {
+  return {
+    __html: `{
+      "@context": "https://schema.org/",
+      "@type": "WebSite",
+      "name": ${name},
+      "description": ${description}"
+    }
+`,
+  };
+}
 
 export default function Document() {
   return (
@@ -24,7 +29,15 @@ export default function Document() {
           content="https://guidesubaruquebec.com/GSQ_OG.png"
         />
         <meta property="og:type" content="website" />
-        <script type="application/ld+json">{JSON.stringify(websiteData)}</script>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addJsonLd(
+            "Guide Subaru Québec",
+            "Guide Subaru Québec est dédié à la communauté Subaru au Québec. Retrouvez des informations sur les garages spécialisés Subaru ainsi que des guides sur la modification et l'entretien de votre véhicule."
+          )}
+          key="jsonld"
+        ></script>
       </Head>
       <body>
         <Main />
