@@ -5,8 +5,8 @@ export function addJsonLd(name: string, description: string) {
     __html: `{
       "@context": "https://schema.org/",
       "@type": "WebSite",
-      "name": ${name},
-      "description": ${description}"
+      "name": "${name}",
+      "description": "${description}"
     }
 `,
   };
