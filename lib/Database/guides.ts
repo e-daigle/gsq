@@ -42,7 +42,7 @@ export const getGuide = async (name: string) => {
   try {
     const { data, error, status } = await supabase
       .from("guides")
-      .select("longTitle, content")
+      .select("longTitle, content, desc, modified_at, created_at")
       .eq("link", name)
       .single();
     if (error && status !== 406) {
@@ -52,6 +52,9 @@ export const getGuide = async (name: string) => {
       var guide: IGuideContent = {
         title: data.longTitle,
         paragraphs: data.content,
+        description: data.desc,
+        created_at: data.created_at??data.modified_at,
+        modified_at: data.modified_at
       };
       return guide;
     }

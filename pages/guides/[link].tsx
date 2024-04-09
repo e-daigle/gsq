@@ -7,7 +7,8 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import withLayout from "../../layouts/withLayout";
 import handleError from "../../utils/handleError";
 import { addError } from "../../lib/Database/errors";
-import styles from "../../styles/guide.module.css"
+import styles from "../../styles/guide.module.css";
+import Head from "next/head";
 
 type Props = {
   guide?: IGuideContent;
@@ -22,41 +23,43 @@ const Guide = ({ guide, errors }: Props) => {
 
   return (
     <>
-    
-      {guide ? (
-        <div className={styles.mainText}>
-          <h2>{guide.title}</h2>
-          {guide.paragraphs.map((guide, idx) => (
-            <React.Fragment key={idx}>
-              {guide.title && <h3 key={idx}>{guide.title}</h3>}
-              {guide.inline && (
-                <p key={idx}>
-                  {guide.inline.map((inline, idx) => (
-                    <React.Fragment key={idx}>
-                      {inline.strong && <strong>{inline.strong}</strong>}
-                      {inline.text && inline.text}
-                      {inline.link && (
-                        <Link href={`/${inline.link.to}`}>
-                          {inline.link.text}
-                        </Link>
-                      )}
-                      &nbsp;
-                    </React.Fragment>
-                  ))}
-                </p>
-              )}
-              {/*guide.image && (
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addJsonLd(guide.title, guide.title)}
+          key="jsonld"
+        ></script>
+      </Head>
+      <div className={styles.mainText}>
+        <h2>{guide.title}</h2>
+        {guide.paragraphs.map((guide, idx) => (
+          <React.Fragment key={idx}>
+            {guide.title && <h3 key={idx}>{guide.title}</h3>}
+            {guide.inline && (
+              <p key={idx}>
+                {guide.inline.map((inline, idx) => (
+                  <React.Fragment key={idx}>
+                    {inline.strong && <strong>{inline.strong}</strong>}
+                    {inline.text && inline.text}
+                    {inline.link && (
+                      <Link href={`/${inline.link.to}`}>
+                        {inline.link.text}
+                      </Link>
+                    )}
+                    &nbsp;
+                  </React.Fragment>
+                ))}
+              </p>
+            )}
+            {/*guide.image && (
                 {<div className="imageBPV">
                   <img alt="Bypass Valve" src={guide.image.src} />
                   <h4 className="desc">{guide.image.desc}</h4>
               </div>}
               )*/}
-            </React.Fragment>
-          ))}
-        </div>
-      ) : (
-        <p>alllo</p>
-      )}
+          </React.Fragment>
+        ))}
+      </div>
     </>
   );
 };
@@ -104,12 +107,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   } catch (error) {
     const errorMessage = handleError(error);
-    addError( errorMessage, "Admin index");
+    addError(errorMessage, "Admin index");
     return {
       props: {
-        error: errorMessage
+        error: errorMessage,
       },
       revalidate: 10,
     };
   }
 };
+
+function addJsonLd(headline: string, description: string) {
+  return {
+    __html: `{
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "headline": ${headline},
+      "description": ${description}
+    }
+`,
+  };
+}

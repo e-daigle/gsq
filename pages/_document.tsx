@@ -1,27 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
-export function addJsonLd(name: string, description: string) {
-  return {
-    __html: `{
-      "@context": "https://schema.org/",
-      "@type": "NewsArticle",
-      "url": "https://guidesubaruquebec.com/",
-      "alternateName": "GSQ",
-      "name": "${name}",
-      "description": "${description}",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://guidesubaruquebec.com/?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }
-`,
-  };
-}
-
 export default function Document() {
   return (
     <Html lang="fr">

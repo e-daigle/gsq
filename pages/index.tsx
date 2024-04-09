@@ -3,7 +3,6 @@ import HomeCards from "../components/HomeCards";
 import Hero from "../components/Hero";
 import withLayout from "../layouts/withLayout";
 import Head from "next/head";
-import { addJsonLd } from "./_document";
 
 export default function Home() {
   return (
@@ -40,10 +39,7 @@ export default function Home() {
         <meta name="google" content="nositelinkssearchbox"/>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={addJsonLd(
-            "Guide Subaru Québec",
-            "Guide Subaru Québec est dédié à la communauté Subaru au Québec. Retrouvez des informations sur les garages spécialisés Subaru ainsi que des guides sur la modification et l'entretien de votre véhicule."
-          )}
+          dangerouslySetInnerHTML={addJsonLd()}
           key="jsonld"
         ></script>
       </Head>
@@ -58,3 +54,25 @@ export default function Home() {
 }
 
 Home.getLayout = withLayout();
+
+function addJsonLd() {
+  return {
+    __html: `{
+      "@context": "https://schema.org/",
+      "@type": "NewsArticle",
+      "url": "https://guidesubaruquebec.com/",
+      "name": "Guide Subaru Québec",
+      "description": "Guide Subaru Québec est dédié à la communauté Subaru au Québec. Retrouvez des informations sur les garages spécialisés Subaru ainsi que des guides sur la modification et l'entretien de votre véhicule.",
+      "alternateName": "GSQ",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://guidesubaruquebec.com/guides/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+`,
+  };
+}

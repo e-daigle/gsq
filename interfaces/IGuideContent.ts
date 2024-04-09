@@ -1,5 +1,8 @@
 export default interface IGuideContent {
     title: string;
+    description: string;
+    modified_at: string;
+    created_at: string;
     paragraphs: [
       {
         title?: string;
