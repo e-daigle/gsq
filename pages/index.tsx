@@ -59,7 +59,7 @@ function addJsonLd() {
   return {
     __html: `{
       "@context": "https://schema.org/",
-      "@type": "NewsArticle",
+      "@type": "WebSite",
       "url": "https://guidesubaruquebec.com/",
       "name": "Guide Subaru Québec",
       "description": "Guide Subaru Québec est dédié à la communauté Subaru au Québec. Retrouvez des informations sur les garages spécialisés Subaru ainsi que des guides sur la modification et l'entretien de votre véhicule.",
