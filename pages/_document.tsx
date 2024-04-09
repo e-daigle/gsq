@@ -4,7 +4,7 @@ export function addJsonLd(name: string, description: string) {
   return {
     __html: `{
       "@context": "https://schema.org/",
-      "@type": "NewsArticle",
+      "@type": "WebSite",
       "url": "https://guidesubaruquebec.com/",
       "alternateName": "GSQ",
       "name": "${name}",
@@ -31,15 +31,7 @@ export default function Document() {
           content="https://guidesubaruquebec.com/GSQ_OG.png"
         />
         <meta property="og:type" content="website" />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={addJsonLd(
-            "Guide Subaru Québec",
-            "Guide Subaru Québec est dédié à la communauté Subaru au Québec. Retrouvez des informations sur les garages spécialisés Subaru ainsi que des guides sur la modification et l'entretien de votre véhicule."
-          )}
-          key="jsonld"
-        ></script>
+        <meta property="og:site_name" content="Guide Subaru Québec" />
       </Head>
       <body>
         <Main />

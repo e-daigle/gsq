@@ -3,6 +3,7 @@ import HomeCards from "../components/HomeCards";
 import Hero from "../components/Hero";
 import withLayout from "../layouts/withLayout";
 import Head from "next/head";
+import { addJsonLd } from "./_document";
 
 export default function Home() {
   return (
@@ -36,6 +37,14 @@ export default function Home() {
           property="og:image"
           content="https://guidesubaruquebec.com/GSQ_OG.png"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addJsonLd(
+            "Guide Subaru Québec",
+            "Guide Subaru Québec est dédié à la communauté Subaru au Québec. Retrouvez des informations sur les garages spécialisés Subaru ainsi que des guides sur la modification et l'entretien de votre véhicule."
+          )}
+          key="jsonld"
+        ></script>
       </Head>
       <section className="heroParallax">
         <Hero />
