@@ -6,6 +6,7 @@ export function addJsonLd(name: string, description: string) {
       "@context": "https://schema.org/",
       "@type": "NewsArticle",
       "url": "https://guidesubaruquebec.com/",
+      "alternateName": "GSQ",
       "name": "${name}",
       "description": "${description}"
     }
