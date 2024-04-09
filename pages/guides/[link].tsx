@@ -122,8 +122,8 @@ function addJsonLd(headline: string, description: string) {
     __html: `{
       "@context": "http://schema.org",
       "@type": "Article",
-      "headline": ${headline},
-      "description": ${description}
+      "headline": "${headline}",
+      "description": "${description}"
     }
 `,
   };
