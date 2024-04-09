@@ -37,6 +37,7 @@ export default function Home() {
           property="og:image"
           content="https://guidesubaruquebec.com/GSQ_OG.png"
         />
+        <meta name="google" content="nositelinkssearchbox"/>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={addJsonLd(

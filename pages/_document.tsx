@@ -4,11 +4,19 @@ export function addJsonLd(name: string, description: string) {
   return {
     __html: `{
       "@context": "https://schema.org/",
-      "@type": "WebSite",
+      "@type": "NewsArticle",
       "url": "https://guidesubaruquebec.com/",
       "alternateName": "GSQ",
       "name": "${name}",
-      "description": "${description}"
+      "description": "${description}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://guidesubaruquebec.com/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
 `,
   };
