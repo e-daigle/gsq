@@ -6,7 +6,7 @@ export type Json =
   | number
   | boolean
   | null
-  | { [key: string]: Json | undefined }
+  | { [key: string]: Json }
   | Json[]
   | IGuideContent["paragraphs"];
 
@@ -84,7 +84,7 @@ export type Database = {
       };
       guides: {
         Row: {
-          content: Json;
+          content: IGuideContent["paragraphs"];
           created_at: string | null;
           desc: string;
           id: number;
