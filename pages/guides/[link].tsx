@@ -18,15 +18,15 @@ type Props = {
 const Guide = ({ guide, errors }: Props) => {
   const router = useRouter();
   if (router.isFallback) <div>Loading...</div>;
-  if (errors) return <div>Error...</div>;
-  if (!guide) return <div>missing data...</div>;
+  if (errors) return <div>Erreur...</div>;
+  if (!guide) return <div>Données manquantes</div>;
 
   return (
     <>
       <Head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={addJsonLd(guide.title, guide.title)}
+          dangerouslySetInnerHTML={addJsonLd(guide.title, guide.description.replace("\n", ""))}
           key="jsonld"
         ></script>
       </Head>
