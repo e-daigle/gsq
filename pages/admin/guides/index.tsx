@@ -12,7 +12,7 @@ import { checkServerAuth } from "../../../lib/Database/checkSession";
 import { deleteGarage } from "../../../lib/Database/garages";
 import { getGuides } from "../../../lib/Database/guides";
 import { guidesColumns } from "../../../lib/tableColumns";
-import { Database } from "../../../supabase";
+import { Database } from "../../../lib/Database/supabase";
 
 type Props = {
   guides: IGarage[];

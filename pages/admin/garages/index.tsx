@@ -10,7 +10,7 @@ import IGarage from "../../../interfaces/IGarage";
 import { checkServerAuth } from "../../../lib/Database/checkSession";
 import { deleteGarage, getGarages } from "../../../lib/Database/garages";
 import { garagesColumns } from "../../../lib/tableColumns";
-import { Database } from "../../../supabase";
+import { Database } from "../../../lib/Database/supabase";
 
 type Props = {
   garages: IGarage[];
